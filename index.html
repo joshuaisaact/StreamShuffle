@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What To Watch</title>
+    <script type="text/javascript" src="config.js"></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>What To Watch</h1>
+    </header>
+    <form id="genreForm">
+      <label>Choose a genre:</label>
+      <select name="genres" id="genres"></select>
+    </form>
+    <button id="playBtn">Find a film!</button>
+    <div id="movieInfo">
+      <div id="moviePoster"></div>
+      <div id="movieText"></div>
+    </div>
+    <div id="likeOrDislikeBtns" hidden>
+      <button id="likeBtn"><i class="fa-solid fa-thumbs-up"></i></button>
+      <button id="dislikeBtn"><i class="fa-solid fa-thumbs-down"></i></button>
+    </div>
+    <footer><p>uses INSERT NAME API</p></footer>
+  </body>
+</html>
