@@ -165,4 +165,15 @@ li {
     width: 100%;
     height: auto;
   }
+  .trailer,
+  .imdb,
+  .streamingplatforms,
+  .streamList,
+  #movieOverview {
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    text-align: center;
+  }
 }
