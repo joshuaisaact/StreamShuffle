@@ -1,7 +1,3 @@
-const mykey = config.MY_KEY;
-const secretkey = config.SECRET_KEY;
-const tmdbBaseUrl = 'https://api.themoviedb.org/3/'
-
 const playBtn = document.querySelector('.playBtn');
 
 // Pull a list of genres from the API
