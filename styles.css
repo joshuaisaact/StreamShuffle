@@ -22,7 +22,7 @@ header {
 h1 {
   /* font-family: "Righteous", sans-serif; */
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .streamImg {
@@ -111,6 +111,39 @@ img.moviePoster {
   border-color: white;
   font-family: "Righteous";
 }
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(0deg, #ffffff 50%, #ff5c35 100%);
+  animation: spin 1s linear infinite;
+}
+
+.inner-circle {
+  width: 90%;
+  height: 90%;
+  background-color: black;
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 label {
   display: block;
@@ -124,6 +157,10 @@ select {
   background-color: black;
   color: white;
   font-size: 1.25rem;
+}
+
+.hidden {
+  display: none;
 }
 
 .streamList {

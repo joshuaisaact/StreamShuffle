@@ -1,4 +1,5 @@
 const playBtn = document.querySelector('.playBtn');
+const loadAni = document.querySelector('.loader-container')
 
 // Pull a list of genres from the API
 const getGenres = async () => {
@@ -8,7 +9,6 @@ const getGenres = async () => {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error('Fetch movies failed:', error);
@@ -24,7 +24,6 @@ const getMovies = async () => {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error('Fetch movies failed:', error);
@@ -68,11 +67,11 @@ const getStreamingPlatforms = async (movie) => {
   const movieID = movie.id;
   try {
     const response = await fetch(`https://stream-shuffle-server.onrender.com/api/movie-streaming/${movieID}`);
+    // console.log('Raw Response:', await response.text());
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error('Fetch streaming platforms failed:', error);
@@ -87,18 +86,32 @@ const showRandomMovie = async () => {
     clearCurrentMovie();
   };
   const movies = await getMovies();
-  const randomMovie = getRandomMovie(movies);
-  const info = await getMovieInfo(randomMovie);
-  const trailer = await getTrailer(randomMovie)
-  const streaming = await getStreamingPlatforms(randomMovie)
-  if (streaming.flatrate) {
-    displayMovie(info, streaming, trailer);
-  } else {
-    console.log('No flatrate streaming info available, retrying...');
-    showRandomMovie();
+  let randomMovie;
+  let info;
+  let trailer;
+  let streaming;
+
+  while (true) {
+    randomMovie = getRandomMovie(movies);
+    info = await getMovieInfo(randomMovie);
+    trailer = await getTrailer(randomMovie);
+    streaming = await getStreamingPlatforms(randomMovie);
+
+    if (streaming.flatrate) {
+      break;
+
+    } else {
+      console.log('No flatrate streaming info available, retrying...');
+    }
   }
+  loadAni.classList.toggle('hidden')
+  displayMovie(info, streaming, trailer);
 
 };
 
 getGenres().then(populateGenreDropdown);
-playBtn.onclick = showRandomMovie;
+// playBtn.onclick = showRandomMovie;
+playBtn.addEventListener('click', () => {
+  loadAni.classList.toggle('hidden')
+  showRandomMovie();
+})
