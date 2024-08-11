@@ -87,7 +87,7 @@ const createMovieOverview = (overview) => {
 const createIMDBLink = imdb => {
   const imdbL = document.createElement('a');
   imdbL.setAttribute('href', `https://www.imdb.com/title/${imdb}`)
-  imdbL.innerHTML = `<img src=/resources/IMDb_Logo_Rectangle_Gold.png class="imdbimg" alt="IMDB">`;
+  imdbL.innerHTML = `<img src=resources/IMDb_Logo_Rectangle_Gold.png class="imdbimg" alt="IMDB">`;
   imdbL.classList.add('imdb')
   return imdbL;
 }
