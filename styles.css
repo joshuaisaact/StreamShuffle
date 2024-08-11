@@ -1,7 +1,7 @@
 html,
 body {
   background-color: black;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Libre Franklin";
   color: white;
 }
 
@@ -34,7 +34,6 @@ h1 {
   text-align: center;
   margin: 0px auto;
   display: block;
-  font-family: "Staatliches", sans-serif;
   font-size: 80px;
 }
 
@@ -43,7 +42,7 @@ h1 {
   text-align: center;
   margin: 0px auto;
   display: block;
-  font-family: "Fredoka One", sans-serif;
+  font-family: "Libre Franklin";
 }
 
 .movieInfo {
@@ -73,7 +72,6 @@ img.moviePoster {
 }
 
 .movieDetails {
-  font-family: "Questrial";
   color: #fefbea;
   line-height: 1.25;
   animation: fadeIn 2s;
@@ -85,6 +83,7 @@ img.moviePoster {
   margin-left: 32px;
   animation: fadeIn 2s;
   text-align: center;
+  font-family: "Libre Franklin";
 }
 
 .imdb,
