@@ -84,19 +84,22 @@ img.moviePoster {
 .relDate {
   margin-left: 32px;
   animation: fadeIn 2s;
+  text-align: center;
 }
 
 .imdb,
 .trailer {
   margin-left: 32px;
-  animation: fadeIn 5s;
+  animation: fadeIn 2s;
+  display: flex;
+  justify-content: center;
 }
 
 .streamingplatforms {
   padding: 32px;
   display: flex;
   margin-left: 30px;
-  animation: fadeIn 5s;
+  animation: fadeIn 2s;
 }
 
 .playBtn {
@@ -116,6 +119,14 @@ img.moviePoster {
   justify-content: center;
   align-items: center;
   height: 50vh;
+}
+
+.tmdb {
+  height: 5%;
+  width: 5%;
+  position: fixed;
+  right: 5px;
+  bottom: 0;
 }
 
 .loader {
@@ -167,7 +178,7 @@ select {
   display: flex;
   gap: 10%;
   list-style-type: none;
-  animation: fadeIn 5s;
+  animation: fadeIn 2s;
   overflow: scroll;
   justify-content: center;
   flex-wrap: wrap;
