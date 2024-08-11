@@ -182,7 +182,6 @@ select {
   gap: 10%;
   list-style-type: none;
   animation: fadeIn 2s;
-  overflow: scroll;
   justify-content: center;
   flex-wrap: wrap;
 }
