@@ -87,7 +87,7 @@ const createMovieOverview = (overview) => {
 const createIMDBLink = imdb => {
   const imdbL = document.createElement('a');
   imdbL.setAttribute('href', `https://www.imdb.com/title/${imdb}`)
-  imdbL.textContent = 'IMDB';
+  imdbL.innerHTML = `<img src=/resources/IMDb_Logo_Rectangle_Gold.png class="imdbimg" alt="IMDB">`;
   imdbL.classList.add('imdb')
   return imdbL;
 }
@@ -98,7 +98,7 @@ const createStreamingList = list => {
   streamingList.classList.add('streamList');
   list['flatrate'].forEach(el => {
     let item = document.createElement('li');
-    item.innerHTML = `<img src=https://media.themoviedb.org/t/p/original/${el['logo_path']}><br>${el['provider_name']}`;
+    item.innerHTML = `<img src=https://media.themoviedb.org/t/p/original/${el['logo_path']} alt=${el['provider_name']} class="streamImg">`;
     streamingList.appendChild(item);
   })
   return streamingList;

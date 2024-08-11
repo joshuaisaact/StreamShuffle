@@ -15,10 +15,19 @@ header {
   height: auto;
 }
 
+.imdbimg {
+  width: 100px;
+}
+
 h1 {
   /* font-family: "Righteous", sans-serif; */
   text-align: center;
   font-size: 4rem;
+}
+
+.streamImg {
+  border-radius: 20%;
+  padding: 10px;
 }
 
 .appTitle {
@@ -52,6 +61,7 @@ h1 {
 .movieDetails {
   width: 50%;
   float: left;
+  border-radius: 10px;
 }
 
 img.moviePoster {
