@@ -217,7 +217,18 @@ p {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background: linear-gradient(0deg, #ffffff 50%, #ff5c35 100%);
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
   animation: spin 1s linear infinite;
 }
 
