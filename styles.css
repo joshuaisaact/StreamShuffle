@@ -207,7 +207,8 @@ li {
   .streamingplatforms,
   .streamList,
   #movieOverview,
-  .movieTitle {
+  .movieTitle,
+  .relDate {
     margin-left: 0;
     display: flex;
     justify-content: center;

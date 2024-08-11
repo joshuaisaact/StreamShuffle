@@ -70,7 +70,7 @@ const createReleaseDate = isoDate => {
 
   const relDate = document.createElement('p')
   relDate.setAttribute('class', 'relDate')
-  relDate.innerHTML = `Released: ${day} ${month} ${year}`
+  relDate.innerHTML = `${day} ${month} ${year}`
 
   return relDate;
 }
