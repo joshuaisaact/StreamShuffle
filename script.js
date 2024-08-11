@@ -107,6 +107,9 @@ const showRandomMovie = async () => {
   loadAni.classList.add('hidden')
   displayMovie(info, streaming, trailer);
 
+  if (movieInfo) {
+    movieInfo.scrollIntoView({ behavior: 'smooth' });
+  }
 };
 
 getGenres().then(populateGenreDropdown);
