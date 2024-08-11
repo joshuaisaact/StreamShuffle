@@ -69,21 +69,21 @@ img.moviePoster {
   height: auto;
   display: block;
   margin: auto;
-  animation: fadeIn 5s;
+  animation: fadeIn 2s;
 }
 
 .movieDetails {
   font-family: "Questrial";
   color: #fefbea;
   line-height: 1.25;
-  animation: fadeIn 5s;
+  animation: fadeIn 2s;
 }
 
 .movieTitle,
 #movieOverview,
 .relDate {
   margin-left: 32px;
-  animation: fadeIn 5s;
+  animation: fadeIn 2s;
 }
 
 .imdb,
@@ -169,11 +169,15 @@ li {
   .imdb,
   .streamingplatforms,
   .streamList,
-  #movieOverview {
+  #movieOverview,
+  .movieTitle {
     margin-left: 0;
     display: flex;
     justify-content: center;
     padding-left: 0;
     text-align: center;
+  }
+  h1 {
+    font-size: 2rem;
   }
 }
