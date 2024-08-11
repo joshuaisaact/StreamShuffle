@@ -6,94 +6,80 @@ const playBtn = document.querySelector('.playBtn');
 
 // Pull a list of genres from the API
 const getGenres = async () => {
-  const genreRequestEndpoint = 'genre/movie/list';
-  const requestParams = `?api_key=${secretkey}`
-  const urlToFetch = tmdbBaseUrl + genreRequestEndpoint + requestParams;
-
   try {
-    const response = await fetch(urlToFetch)
-    if (response.ok) {
-      const jsonresponse = await response.json();
-      const genres = await jsonresponse.genres;
-      return genres;
+    const response = await fetch(`https://stream-shuffle-server.onrender.com/api/genres`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error('Fetch movies failed:', error);
   }
-  catch (error) {
-    console.log(error);
-  }
-};
+}
 
 // Pull a list of movies from the API (random page from 1 to 100)
 const getMovies = async () => {
   const selectedGenre = getSelectedGenre();
-  const discoverMovieEndpoint = 'discover/movie';
-  const requestParams = `?api_key=${secretkey}&with_genres=${selectedGenre}&region=GB&page=${Math.trunc(Math.random() * 100) + 1}`;
-  const urlToFetch = tmdbBaseUrl + discoverMovieEndpoint + requestParams;
   try {
-    const response = await fetch(urlToFetch);
-    if (response.ok) {
-      const jsonresponse = await response.json();
-      const movies = jsonresponse.results;
-      console.log(movies)
-      return movies;
+    const response = await fetch(`https://stream-shuffle-server.onrender.com/api/movies?genre=${selectedGenre}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
-    console.log(error);
+    console.error('Fetch movies failed:', error);
   }
-};
+}
 
 // Grab detailed information about a random film
 const getMovieInfo = async (movie) => {
   const movieID = movie.id;
-  const movieEndpoint = `movie/${movieID}`;
-  const requestParams = `?api_key=${secretkey}`;
-  const urlToFetch = `${tmdbBaseUrl}${movieEndpoint}${requestParams}`;
   try {
-    const response = await fetch(urlToFetch);
-    if (response.ok) {
-      const movieInfo = await response.json();
-      console.log(movieInfo);
-      return movieInfo;
+    const response = await fetch(`https://stream-shuffle-server.onrender.com/api/movie-info/${movieID}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+    const data = await response.json();
+    // console.log(data);
+    return data;
   } catch (error) {
-    console.log(error);
+    console.error('Fetch movie info failed:', error);
   }
 };
 
 // Get a film trailer link from the Videos endpoint
 const getTrailer = async (movie) => {
   const movieID = movie.id;
-  const movieEndpoint = `movie/${movieID}/videos`;
-  const requestParams = `?api_key=${secretkey}`;
-  const urlToFetch = `${tmdbBaseUrl}${movieEndpoint}${requestParams}`;
   try {
-    const response = await fetch(urlToFetch);
-    if (response.ok) {
-      let trailerInfo = await response.json();
-      trailerInfo = trailerInfo.results;
-      console.log(trailerInfo);
-      return trailerInfo;
+    const response = await fetch(`https://stream-shuffle-server.onrender.com/api/movie-trailer/${movieID}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
-    console.log(error);
+    console.error('Fetch movie trailer failed:', error);
   }
 }
 
 // Get streaming platform availability information from a different endpoint
 const getStreamingPlatforms = async (movie) => {
   const movieID = movie.id;
-  const movieEndpoint = `movie/${movieID}/watch/providers`;
-  const requestParams = `?api_key=${secretkey}`;
-  const urlToFetch = `${tmdbBaseUrl}${movieEndpoint}${requestParams}`;
   try {
-    const response = await fetch(urlToFetch);
-    if (response.ok) {
-      const streamingInfo = await response.json();
-      console.log(streamingInfo.results['GB'])
-      return streamingInfo;
+    const response = await fetch(`https://stream-shuffle-server.onrender.com/api/movie-streaming/${movieID}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
-    showRandomMovie();
+    console.error('Fetch streaming platforms failed:', error);
   }
 }
 
@@ -109,20 +95,13 @@ const showRandomMovie = async () => {
   const info = await getMovieInfo(randomMovie);
   const trailer = await getTrailer(randomMovie)
   const streaming = await getStreamingPlatforms(randomMovie)
-
-  if (streaming && streaming.results && streaming.results['GB'] && streaming.results['GB'].flatrate) {
-    displayMovie(info, streaming.results['GB'], trailer);
+  if (streaming.flatrate) {
+    displayMovie(info, streaming, trailer);
   } else {
     console.log('No flatrate streaming info available, retrying...');
-    // if (retryCount < MAX_RETRIES) {
-    showRandomMovie(); // Retry if flatrate is undefined
-    // } else {
-    //   console.log('Max retries reached. Could not find a movie with flatrate streaming.');
-    // }
+    showRandomMovie();
   }
 
-  // displayMovie(info, streaming.results['GB']);
-  // streamingInfo(streaming.results['GB']);
 };
 
 getGenres().then(populateGenreDropdown);
