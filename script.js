@@ -97,14 +97,14 @@ const showRandomMovie = async () => {
     trailer = await getTrailer(randomMovie);
     streaming = await getStreamingPlatforms(randomMovie);
 
-    if (streaming.flatrate) {
+    if (streaming && streaming.flatrate) {
       break;
 
     } else {
       console.log('No flatrate streaming info available, retrying...');
     }
   }
-  loadAni.classList.toggle('hidden')
+  loadAni.classList.add('hidden')
   displayMovie(info, streaming, trailer);
 
 };
@@ -112,6 +112,6 @@ const showRandomMovie = async () => {
 getGenres().then(populateGenreDropdown);
 // playBtn.onclick = showRandomMovie;
 playBtn.addEventListener('click', () => {
-  loadAni.classList.toggle('hidden')
+  loadAni.classList.remove('hidden')
   showRandomMovie();
 })
