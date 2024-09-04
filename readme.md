@@ -8,7 +8,7 @@ The API calls are to a backend hosted using Render, built in Express (see separa
 
 - **Genre Selection**: Choose a genre and let the app pick a random movie for you.
 - **Random Movie Info**: Get detailed information about a randomly selected movie, including title, overview, and release date.
-- **Streaming Availability**: See where the movie is available for streaming, focusing on platforms offering free (flatrate) streaming.
+- **Streaming Availability**: See where the movie is available for streaming, focusing on platforms offering free (flatrate) streaming, in the UK.
 - **Movie Trailer**: Watch a trailer for the randomly selected movie.
 
 ## How it Works
@@ -25,7 +25,7 @@ ShuffleStream works by making several API calls to fetch data about movies:
 
 ### JavaScript
 
-The game logic is powered by JavaScript, utilizing asynchronous API calls and DOM manipulation to display information to the user.
+The application logic is powered by JavaScript, utilizing asynchronous API calls and DOM manipulation to display information to the user.
 
 - **API Calls**: The app makes several asynchronous calls to fetch genres, movies, and streaming details from the API.
 - **DOM Manipulation**: The app dynamically updates the content of the page, including the genre dropdown, movie details, and streaming info.
